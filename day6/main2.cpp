@@ -14,6 +14,12 @@ bool operator==(const Pos& a, const Pos& b)
 }
 
 struct pair_hash {
+    inline std::size_t operator()(const pair<int,int> & v) const {
+        return v.first*31+v.second;
+    }
+};
+
+struct pos_hash {
     inline std::size_t operator()(const Pos & v) const {
         return v.p.first*31+v.p.second;
     }
@@ -38,77 +44,58 @@ int main() {
     };
 
     auto pos = find();
-    auto pos_copy = pos;
+    auto start_pos = pos;
     int sum = 0;
     vector<pair<int, int>> dirs = {{1,0}, {0, 1}, {-1, 0}, {0, -1}};
     int dir_index = 0;
-    vector<Pos> path;
+    unordered_set<pair<int, int>, pair_hash> path;
     auto is_valid = [&](auto pos) {
         return pos.first >= 0 and pos.second >= 0 and pos.first < H and pos.second < W;
     };
     while (is_valid(pos))
     {
-        if (v[pos.first][pos.second] == '#')
+        while (is_valid(pos) and v[pos.first][pos.second] == '#')
         {
             pos.first += dirs[dir_index].first;
             pos.second -= dirs[dir_index].second;
             dir_index = (dir_index + 1)%4;
-            continue;
+            pos.first -= dirs[dir_index].first;
+            pos.second += dirs[dir_index].second;
         }
-        path.push_back(Pos{pos, dir_index});
+        path.insert(pos);
         pos.first -= dirs[dir_index].first;
         pos.second += dirs[dir_index].second;
     }
-    for (int i = 0; i < path.size(); i++)
+    for (auto new_hash : path)
     {
-        auto [poss, dir] = path[i];
-        if (v[poss.first][poss.second] == '#')
+        if (new_hash == start_pos)
             continue;
-
-        dir_index = (dir + 1)%4;
-        auto init_pos = poss;
-        auto init_index = dir_index;
-        auto added_hash = pair{init_pos.first - dir.first, init_pos.second + dir.second};
-        if (is_valid(added_hash))
-            v[added_hash.first][added_hash.second] = '#';
-
-
-        unordered_set<Pos, pair_hash> visited;
+        v[new_hash.first][new_hash.second] = '#';
+        pos = start_pos;
+        dir_index = 0;
+        unordered_set<Pos, pos_hash> visited;
         bool looped = false;
-        // cout << "Test " << poss.first << " " << poss.second << endl;
-        while (is_valid(poss)) 
+        while (is_valid(pos))
         {
-            // cout << poss.first << " " << poss.second << endl;
-            if (visited.find(Pos{poss, dir_index}) != visited.end())
+            while (is_valid(pos) and v[pos.first][pos.second] == '#')
             {
-                break;
-            }
-            visited.insert(Pos{poss, dir_index});
-            if (v[poss.first][poss.second] == '#')
-            {
-                poss.first += dirs[dir_index].first;
-                poss.second -= dirs[dir_index].second;
-                visited.erase(Pos{poss, dir_index});
+                pos.first += dirs[dir_index].first;
+                pos.second -= dirs[dir_index].second;
                 dir_index = (dir_index + 1)%4;
-                continue;
+                pos.first -= dirs[dir_index].first;
+                pos.second += dirs[dir_index].second;
             }
-            poss.first -= dirs[dir_index].first;
-            poss.second += dirs[dir_index].second;
-            if (poss == init_pos) 
+            if (!visited.insert(Pos{pos, dir_index}).second)
             {
-                // cout << "looped " << dir_index << " " << poss.first << " " << poss.second << endl;
                 looped = true;
                 break;
             }
+            pos.first -= dirs[dir_index].first;
+            pos.second += dirs[dir_index].second;
         }
-        // cout << "no cycle\n";
-        if (is_valid(added_hash))
-            v[added_hash.first][added_hash.second] = '.';
+        v[new_hash.first][new_hash.second] = '.';
         if (looped)
-        {
-            // cout << init_pos.first << " " << init_pos.second << endl;
             sum++;
-        }
     }
     cout << sum << endl;
 }
