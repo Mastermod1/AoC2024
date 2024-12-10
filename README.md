@@ -10,8 +10,8 @@
 | 6 | [View](day6) | [Guard Gallivant](https://adventofcode.com/2024/day/6) | C++ |
 | 7 | [View](day7) | [Bridge Repair](https://adventofcode.com/2024/day/7) | Go |
 | 8 | [View](day8) | [Resonant Collinearity](https://adventofcode.com/2024/day/8) | Rust |
-| 9 | [View](day9) | [Disk Fragmenter](https://adventofcode.com/2024/day/9) | C++ |
-| 10 | [View](day10) | [Name](https://adventofcode.com/2024/day/10) | C++ |
+| 9 | [View](day9) | [Disk Fragmenter](https://adventofcode.com/2024/day/9) | Python |
+| 10 | [View](day10) | [Hoof it](https://adventofcode.com/2024/day/10) | C++ |
 | 11 | [View](day11) | [Name](https://adventofcode.com/2024/day/11) | C++ |
 | 12 | [View](day12) | [Name](https://adventofcode.com/2024/day/12) | C++ |
 | 13 | [View](day13) | [Name](https://adventofcode.com/2024/day/13) | C++ |
