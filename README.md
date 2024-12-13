@@ -13,8 +13,8 @@
 | 9 | [View](day9) | [Disk Fragmenter](https://adventofcode.com/2024/day/9) | Python |
 | 10 | [View](day10) | [Hoof it](https://adventofcode.com/2024/day/10) | C++ |
 | 11 | [View](day11) | [Plutonian Pebbles](https://adventofcode.com/2024/day/11) | C++ |
-| 12 | [View](day12) | [Name](https://adventofcode.com/2024/day/12) | C++ |
-| 13 | [View](day13) | [Name](https://adventofcode.com/2024/day/13) | C++ |
+| 12 | [View](day12) | [Garden Groups](https://adventofcode.com/2024/day/12) | C++ |
+| 13 | [View](day13) | [Claw Contraption](https://adventofcode.com/2024/day/13) | C++ |
 | 14 | [View](day14) | [Name](https://adventofcode.com/2024/day/14) | C++ |
 | 15 | [View](day15) | [Name](https://adventofcode.com/2024/day/15) | C++ |
 | 16 | [View](day16) | [Name](https://adventofcode.com/2024/day/16) | C++ |
