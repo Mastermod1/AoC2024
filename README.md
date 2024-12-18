@@ -18,8 +18,8 @@
 | 14 | [View](day14) | [Restroom Redoubt](https://adventofcode.com/2024/day/14) | C++ |
 | 15 | [View](day15) | [Warehouse Woes](https://adventofcode.com/2024/day/15) | C++ |
 | 16 | [View](day16) | [Reindeer Maze](https://adventofcode.com/2024/day/16) | C++ |
-| 17 | [View](day17) | [Name](https://adventofcode.com/2024/day/17) | C++ |
-| 18 | [View](day18) | [Name](https://adventofcode.com/2024/day/18) | C++ |
+| 17 | [View](day17) | [Chronospatial Computer](https://adventofcode.com/2024/day/17) | C++ |
+| 18 | [View](day18) | [RAM Run](https://adventofcode.com/2024/day/18) | C++ |
 | 19 | [View](day19) | [Name](https://adventofcode.com/2024/day/19) | C++ |
 | 20 | [View](day20) | [Name](https://adventofcode.com/2024/day/20) | C++ |
 | 21 | [View](day21) | [Name](https://adventofcode.com/2024/day/21) | C++ |
