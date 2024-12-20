@@ -38,7 +38,6 @@ int main()
     string line;
     vector<string> track;
     pair<long long, long long> start;
-    pair<long long, long long> end;
     long long y = 0;
     while (getline(cin, line))
     {
@@ -46,7 +45,6 @@ int main()
         for (long long i = 0; i < line.length(); i++)
         {
             if (line[i] == 'S') start = make_pair(y, i);
-            if (line[i] == 'E') end = make_pair(y, i);
         }
         y++;
     }
@@ -54,35 +52,31 @@ int main()
     long long w = track.front().length();
     vector<vector<long long>> distances(h, vector<long long>(w, -1));
     bfs(distances, track, start);
-    unordered_map<pair<long long, long long>, long long, hash_p> saved;
+    forward_list<pair<int, int>> path;
     map<long long, long long> time_cnt;
     for (long long i = 0; i < h; i++)
     {
         for (long long j = 0; j < w; j++)
         {
-            if (distances[i][j] == -1) continue;
-            for (auto dir : dirs)
-            {
-                auto np = make_pair(i + dir.first, j + dir.second);
-                if (np.first < 0 or np.second < 0 or np.first >= h or np.second >= w or
-                    distances[np.first][np.second] != -1)
-                    continue;
-                for (long long k = 2; k <= 3; k++)
-                {
-                    auto np = make_pair(i + dir.first * k, j + dir.second * k);
-                    if (np.first < 0 or np.second < 0 or np.first >= h or np.second >= w or
-                        distances[np.first][np.second] == -1 or distances[i][j] > distances[np.first][np.second])
-                        continue;
-                    time_cnt[distances[np.first][np.second] - (distances[i][j] + k)]++;
-                    break;
-                }
-            }
+            if (distances[i][j] != -1)
+                path.emplace_front(i, j);
         }
     }
-    long long cnt = 0;
-    for (auto x : time_cnt)
+    for (auto src : path)
     {
-        if (x.first >= 100) cnt += x.second;
+        for (auto dst : path)
+        {
+            if (src == dst)
+                continue;
+            long long dist = abs(src.first - dst.first) + abs(src.second - dst.second);
+            long long time = distances[dst.first][dst.second] - (distances[src.first][src.second] + dist);
+            if (dist <= 20 and time > 0)
+               time_cnt[time]++;
+        }
     }
-    cout << cnt << endl;
+    long long res = 0;
+    for (auto x : time_cnt)
+        if (x.first >= 100)
+            res += x.second;
+    cout << res << endl;
 }
