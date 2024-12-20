@@ -21,7 +21,7 @@
 | 17 | [View](day17) | [Chronospatial Computer](https://adventofcode.com/2024/day/17) | C++ |
 | 18 | [View](day18) | [RAM Run](https://adventofcode.com/2024/day/18) | C++ |
 | 19 | [View](day19) | [Linen Layout](https://adventofcode.com/2024/day/19) | C++ |
-| 20 | [View](day20) | [Name](https://adventofcode.com/2024/day/20) | C++ |
+| 20 | [View](day20) | [Race Condition](https://adventofcode.com/2024/day/20) | C++ |
 | 21 | [View](day21) | [Name](https://adventofcode.com/2024/day/21) | C++ |
 | 22 | [View](day22) | [Name](https://adventofcode.com/2024/day/22) | C++ |
 | 23 | [View](day23) | [Name](https://adventofcode.com/2024/day/23) | C++ |
